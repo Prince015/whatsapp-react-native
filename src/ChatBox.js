@@ -5,7 +5,7 @@ const ChatBox = () => {
     return (
         <View style={styles.container}>
             <View>
-                <Image source={require('../assets/prince.jpg')} style={{ width: 56, height: 56, borderRadius: 50 }} />
+                <Image source={require('../assets/prince.jpg')} style={{ width: 50, height: 50, borderRadius: 50 }} />
             </View>
             <View style={styles.msgDetails}>
                 <View style={styles.msgDetailsTop}>
@@ -14,7 +14,7 @@ const ChatBox = () => {
                 </View>
                 <View style={styles.msgDetailsBottom}>
                     <Text numberOfLines={1} style={styles.msg}>{String("Hey, how are you? call me when you get Free")}</Text>
-                    <Text style={styles.unread}>1</Text>
+                    <Text style={styles.unread}>10</Text>
                 </View>
             </View>
         </View>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1,
         display: 'flex',
         alignSelf: 'flex-end',
-        paddingVertical: 5,
+        // paddingVertical: 5,
     },
     msgDetailsTop: {
         flex: 1,
@@ -59,17 +59,19 @@ const styles = StyleSheet.create({
     },
     unread: {
         backgroundColor: '#00af9c',
-        minWidth: 30,
-        minHeight: 30,
-        // maxHeight: 25,
-        padding: 5,
-        // aspectRatio: 1,
+        minWidth: 20,
+        minHeight: 20,
+        maxHeight: 25,
+        // padding: 5,
+        aspectRatio: 1,
         borderRadius: 100,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
         verticalAlign: 'middle',
+        position: 'absolute',
+        right: 0,
     },
     msg: {
         fontSize: 16,

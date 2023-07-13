@@ -11,7 +11,7 @@ const Tabs = () => {
     const Tab = createMaterialTopTabNavigator();
 
     return (
-        <NavigationContainer style={styles.container}>
+        // <NavigationContainer style={styles.container}>
             <Tab.Navigator
             backBehavior='none'
             screenOptions={({ route }) => ({
@@ -25,11 +25,11 @@ const Tabs = () => {
                     color: '#8797a1',
                 },
                 tabBarLabel: ({ focused }) => (
-                    <Text style={{ color: focused ? '#00a982' : '#8797a1', fontSize:18  }}>
+                    <Text style={{ color: focused ? '#00a982' : '#8797a1', fontSize:14  }}>
                         {route.name}
                     </Text>
                 ),
-                tabBarPressColor: '#1f2c34',
+                tabBarPressColor: '#fff',
                 tabBarActiveTintColor: '#00a982',
                 tabBarIndicatorStyle: {
                     backgroundColor: '#00a982',
@@ -41,7 +41,7 @@ const Tabs = () => {
                 <Tab.Screen name="Status" component={Status} />
                 <Tab.Screen name="Calls" component={Calls} />
             </Tab.Navigator>
-        </NavigationContainer>
+        // </NavigationContainer>
     )
 }
 
