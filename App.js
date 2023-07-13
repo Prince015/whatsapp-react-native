@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CameraComp from './src/Camera';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import ClickedImage from './src/ClickedImage';
 
 
 const Stack = createNativeStackNavigator()
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Navigator >
           <Stack.Screen options={{headerShown:false, animation:'slide_from_left'}}  name="Home" component={Home} />
           <Stack.Screen options={{headerShown:false, animation:'slide_from_right'}} name="Camera" component={CameraComp} />
+          <Stack.Screen options={{headerShown:false, animation:'fade'}} name="ClickedImage" component={ClickedImage} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

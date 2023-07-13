@@ -18,13 +18,13 @@ const Home = ({navigation}) => {
       <View style={styles.wtspHomeHeader}>
         <Text style={styles.wtspTitle}>WhatsApp</Text>
         <View style={styles.wtspHomeHeaderIcons}>
-          <Pressable android_ripple={{ color: '#f1f2f3',radius:20, borderless: true }} onPress={handleCamera} >
+          <Pressable android_ripple={{ color: '#f1f2f338',radius:20, borderless: true }} onPress={handleCamera} >
             <Ionicons name="camera-outline" size={24} color="#8797a1" />
           </Pressable>
-          <Pressable android_ripple={{ color: '#f1f2f3',radius:20, borderless: true }} onPress={handleCamera} >
+          <Pressable android_ripple={{ color: '#f1f2f338',radius:20, borderless: true }} onPress={handleCamera} >
             <AntDesign name="search1" size={20} color="#8797a1" />
           </Pressable>
-          <Pressable android_ripple={{ color: '#f1f2f3',radius:20, borderless: true }} onPress={handleCamera} >
+          <Pressable android_ripple={{ color: '#f1f2f338',radius:20, borderless: true }} onPress={handleCamera} >
             <Feather name="more-vertical" size={20} color="#8797a1" />
           </Pressable>
         </View>

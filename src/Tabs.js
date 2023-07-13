@@ -29,7 +29,7 @@ const Tabs = () => {
                         {route.name}
                     </Text>
                 ),
-                tabBarPressColor: '#fff',
+                tabBarPressColor: '#f1f2f338',
                 tabBarActiveTintColor: '#00a982',
                 tabBarIndicatorStyle: {
                     backgroundColor: '#00a982',

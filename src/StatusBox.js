@@ -1,24 +1,29 @@
-import { View, Text, Image, StyleSheet, TouchableNativeFeedback } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable, TouchableNativeFeedback } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
-const ChatBox = () => {
+const StatusBox = ({myStatus}) => {
+
+    const navigation = useNavigation();
+
     return (
-        <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple("#f1f2f338",false)}>
+        <TouchableNativeFeedback onPress={()=>myStatus && navigation.push("Camera")}  background={TouchableNativeFeedback.Ripple("#f1f2f338",false)} >
             <View style={styles.container}>
             <View>
                 <Image source={require('../assets/prince.jpg')} style={{ width: 50, height: 50, borderRadius: 50 }} />
             </View>
             <View style={styles.msgDetails}>
                 <View style={styles.msgDetailsTop}>
-                    <Text style={styles.title}>Prince</Text>
-                    <Text style={{ color: "#8797a1" }}>10:36pm</Text>
+                    <Text style={styles.title}>{myStatus? "My status":"Prince"}</Text>
+                    {/* <Text style={{ color: "#8797a1" }}>10:36pm</Text> */}
                 </View>
                 <View style={styles.msgDetailsBottom}>
-                    <Text numberOfLines={1} style={styles.msg}>{String("Hey, how are you? call me when you get Free")}</Text>
-                    <Text style={styles.unread}>10</Text>
+                    <Text numberOfLines={1} style={styles.msg}>{myStatus? String("Tap to add status update"):String("Today, 11:12am")}</Text>
+                    {/* <Text style={styles.unread}>10</Text> */}
                 </View>
             </View>
             </View>
+            
         </TouchableNativeFeedback>
     )
 }
@@ -86,4 +91,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default ChatBox
+export default StatusBox
