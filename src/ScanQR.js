@@ -27,7 +27,7 @@ const ScanQR = () => {
   }, []);
 
   if (!location) {
-    return <Text>Loading...</Text>;
+    return <Text>Need location permission to scan QR...</Text>;
   }
 
   // Your coordinates
@@ -68,7 +68,7 @@ const ScanQR = () => {
     <View style={styles.container}>
 
       {isWithinRadius ? <BarCodeScanner
-        style={StyleSheet.absoluteFillObject}
+        style={styles.barcode}
         onBarCodeScanned={handleBarCodeScanned}
       /> : <Text style={{ color: 'red' }}>You are not within the radius</Text>
       }
@@ -84,28 +84,20 @@ const ScanQR = () => {
 
 
 const styles = StyleSheet.create({
+  barcode:{
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 300,
+    height: 200,
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-end',
-  },
-  imageContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 16,
-  },
-  image: {
-    width: 200,
-    height: 200,
-    resizeMode: 'contain',
-  },
-  imagePickerButton: {
-    alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#007AFF',
-  },
-  imagePickerButtonText: {
-    color: 'white',
-    fontSize: 16,
+    // justifyContent: 'flex-end',
   },
   scannedDataContainer: {
     backgroundColor: 'white',
