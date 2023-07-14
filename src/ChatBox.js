@@ -1,23 +1,63 @@
-import { View, Text, Image, StyleSheet, TouchableNativeFeedback } from 'react-native'
-import React from 'react'
+import { View, Text, Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, Animated, Modal } from 'react-native'
+import React, { useRef, useState } from 'react'
 
 const ChatBox = () => {
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const scaleValue = useRef(new Animated.Value(0)).current;
+    const handleOpenModal = () => {
+        setModalVisible(true);
+        Animated.timing(scaleValue, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+        }).start();
+    };
+
+    const handleCloseModal = () => {
+        Animated.timing(scaleValue, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+        }).start(() => {
+            setModalVisible(false);
+        });
+    };
+
+    const animatedStyle = {
+        transform: [{ scale: scaleValue }],
+    };
     return (
-        <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple("#f1f2f338",false)}>
+        <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple("#f1f2f338", false)}>
             <View style={styles.container}>
-            <View>
-                <Image source={require('../assets/prince.jpg')} style={{ width: 50, height: 50, borderRadius: 50 }} />
-            </View>
-            <View style={styles.msgDetails}>
-                <View style={styles.msgDetailsTop}>
-                    <Text style={styles.title}>Prince</Text>
-                    <Text style={{ color: "#8797a1" }}>10:36pm</Text>
+                <TouchableOpacity onPress={handleOpenModal}>
+                    <Image source={require('../assets/prince.jpg')} style={{ width: 50, height: 50, borderRadius: 50 }} />
+                </TouchableOpacity>
+                <Modal visible={modalVisible} transparent={true} onRequestClose={handleCloseModal}>
+                    <TouchableOpacity
+                        style={styles.modalContainer}
+                        activeOpacity={1}
+                        onPress={handleCloseModal}
+                    >
+                        <Animated.View style={[styles.modalContent, animatedStyle]}>
+                            <Image
+                                source={require('../assets/prince.jpg')} // Replace with your image source
+                                style={styles.modalImage}
+                            />
+                        </Animated.View>
+
+                    </TouchableOpacity>
+                </Modal>
+                <View style={styles.msgDetails}>
+                    <View style={styles.msgDetailsTop}>
+                        <Text style={styles.title}>Prince</Text>
+                        <Text style={{ color: "#8797a1" }}>10:36pm</Text>
+                    </View>
+                    <View style={styles.msgDetailsBottom}>
+                        <Text numberOfLines={1} style={styles.msg}>{String("Hey, how are you? call me when you get Free")}</Text>
+                        <Text style={styles.unread}>10</Text>
+                    </View>
                 </View>
-                <View style={styles.msgDetailsBottom}>
-                    <Text numberOfLines={1} style={styles.msg}>{String("Hey, how are you? call me when you get Free")}</Text>
-                    <Text style={styles.unread}>10</Text>
-                </View>
-            </View>
             </View>
         </TouchableNativeFeedback>
     )
@@ -82,6 +122,25 @@ const styles = StyleSheet.create({
         // whiteSpace: 'nowrap',
         // overflow: 'hidden',
         // textOverflow: 'ellipsis',
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    },
+    modalContent: {
+        width: '80%',
+        height: '80%',
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalImage: {
+        width: '90%',
+        height: '90%',
+        resizeMode: 'contain',
     },
 
 })
